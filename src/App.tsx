@@ -127,8 +127,8 @@ export default function App() {
 
       <ParticleLogo />
       
-      <div ref={scrollWrapperRef} className="bg-[#000] h-[100dvh] overflow-hidden flex">
-        <div ref={panelsRef} className="flex h-full w-[700vw] flex-nowrap items-center will-change-transform">
+      <div ref={scrollWrapperRef} className="relative h-[100dvh] overflow-hidden flex z-10 pointer-events-none">
+        <div ref={panelsRef} className="flex h-full w-[700vw] flex-nowrap items-center will-change-transform pointer-events-auto">
           <div className="w-screen h-full shrink-0 flex items-center justify-center relative"><Panel1 /></div>
           <div className="w-screen h-full shrink-0 flex items-center justify-center relative"><Panel2 /></div>
           <div className="w-screen h-full shrink-0 flex items-center justify-center relative js-panel-3"><Panel3 /></div>

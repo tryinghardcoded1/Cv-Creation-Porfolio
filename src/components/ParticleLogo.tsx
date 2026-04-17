@@ -175,7 +175,7 @@ export function ParticleLogo() {
   }, []);
 
   return (
-    <div className="fixed top-1/2 right-4 md:right-16 -translate-y-1/2 z-[5] pointer-events-none opacity-90 mix-blend-screen scale-75 md:scale-100">
+    <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none opacity-15 mix-blend-screen scale-100 md:scale-150">
       <canvas ref={canvasRef} className="w-[300px] h-[300px] drop-shadow-[0_0_15px_rgba(57,255,20,0.4)]"></canvas>
     </div>
   );
