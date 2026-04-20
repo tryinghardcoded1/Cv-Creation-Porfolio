@@ -75,7 +75,8 @@ class Particle {
     // Dynamic shimmer/fade based on individual particle velocity
     const shimmer = Math.min(1, (Math.abs(this.vx) + Math.abs(this.vy)) * 0.1);
     context.fillStyle = this.color;
-    context.globalAlpha = Math.max(0.1, 1 - shimmer * 0.7);
+    // Lower base alpha for a ghost-like watermark appearance
+    context.globalAlpha = Math.max(0.05, 0.4 - shimmer * 0.35);
     
     context.beginPath();
     context.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -129,8 +130,8 @@ export function ParticleLogo() {
 
     const textCoordinates = ctx.getImageData(0, 0, width, height);
     
-    // Decrease step for immense density (+1 pixel resolution)
-    const step = 2; 
+    // Increase step to drastically decrease density (fewer particles)
+    const step = 4; 
     const neonGreen = '#39FF14';
 
     // Seed Particles mapping precisely to the visible pixels
@@ -138,7 +139,7 @@ export function ParticleLogo() {
       for (let x = 0; x < textCoordinates.width; x += step) {
         if (textCoordinates.data[(y * 4 * textCoordinates.width) + (x * 4) + 3] > 128) {
           // Inject minor organic noise gaps cutting geometry evenly
-          if (Math.random() > 0.25) {
+          if (Math.random() > 0.4) {
             particlesArray.push(new Particle(x, y, neonGreen));
           }
         }
@@ -175,8 +176,8 @@ export function ParticleLogo() {
   }, []);
 
   return (
-    <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none opacity-15 mix-blend-screen scale-100 md:scale-150">
-      <canvas ref={canvasRef} className="w-[300px] h-[300px] drop-shadow-[0_0_15px_rgba(57,255,20,0.4)]"></canvas>
+    <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none opacity-10 mix-blend-screen scale-100 md:scale-150">
+      <canvas ref={canvasRef} className="w-[300px] h-[300px] drop-shadow-[0_0_15px_rgba(57,255,20,0.2)]"></canvas>
     </div>
   );
 }

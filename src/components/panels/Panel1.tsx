@@ -21,7 +21,10 @@ export function Panel1() {
             Tired of developers who can't finish a build and agencies that charge high fees with zero sales? I build for performance and market for profit. See the results first—pay once they're delivered.
           </p>
           <div className="flex flex-col md:flex-row items-start md:items-center gap-6 mt-8 font-sans">
-            <button className="border-2 border-white text-black bg-white px-8 py-3 text-sm font-bold tracking-widest uppercase hover:bg-transparent hover:text-white transition-colors cursor-pointer pointer-events-auto">
+            <button 
+              onClick={() => (window as any).scrollToPanel?.(7)}
+              className="border-2 border-white text-black bg-white px-8 py-3 text-sm font-bold tracking-widest uppercase hover:bg-transparent hover:text-white transition-colors cursor-pointer pointer-events-auto"
+            >
               Get Started
             </button>
             <div className="flex flex-col">
